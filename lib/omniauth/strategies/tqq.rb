@@ -32,12 +32,13 @@ module OmniAuth
       end
 
       #TODO:  this is missing from the raw_info request. it is in other api methods.  should we make two calls?
-      uid { access_token.params[:open_id] }
+      uid { raw_info['data']['name'] }
 
       info do
         {
           :nickname => raw_info['data']['nick'],
           :name => raw_info['data']['name'],
+          :email => raw_info['data']['email'],
           :location => raw_info['data']['location'],
           :image => raw_info['data']['head'],
           :description => raw_info['description'],
